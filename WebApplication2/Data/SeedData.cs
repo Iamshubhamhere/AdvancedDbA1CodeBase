@@ -53,38 +53,61 @@ namespace WebApplication2.Data
                 context.Store.AddRange(store1, store2, store3);
                 context.SaveChanges();
             }
-               
+
 
             // Seed Laptops
             Laptop laptop1 = new Laptop
             {
-             
-                Model = "Laptop Model X",
+                Model = "Aspiria",
                 Price = 1000,
                 Condition = LaptopCondition.New,
                 Brand = brand1
             };
             Laptop laptop2 = new Laptop
             {
-               
-                Model = "Laptop Model Y",
+                Model = "Unicorn",
                 Price = 800,
                 Condition = LaptopCondition.Used,
                 Brand = brand2
             };
             Laptop laptop3 = new Laptop
             {
-               
-                Model = "Laptop Model Z",
+                Model = "League",
                 Price = 1200,
                 Condition = LaptopCondition.Refurbished,
                 Brand = brand1
             };
-            if (!context.Laptops.Any()) {
-                context.Laptops.AddRange(laptop1, laptop2, laptop3);
+
+            Laptop laptop4 = new Laptop
+            {
+                Model = "Unicorn2.0",
+                Price = 900,
+                Condition = LaptopCondition.New,
+                Brand = brand3
+            };
+
+            Laptop laptop5 = new Laptop
+            {
+                Model = "Star",
+                Price = 1100,
+                Condition = LaptopCondition.Used,
+                Brand = brand2
+            };
+
+            Laptop laptop6 = new Laptop
+            {
+                Model = "Stone",
+                Price = 950,
+                Condition = LaptopCondition.Refurbished,
+                Brand = brand3
+            };
+
+            if (!context.Laptops.Any())
+            {
+                context.Laptops.AddRange(laptop1, laptop2, laptop3, laptop4, laptop5, laptop6);
                 context.SaveChanges();
             }
-            
+
 
             LaptopStore laptopStore1 = new LaptopStore
             {
@@ -118,8 +141,29 @@ namespace WebApplication2.Data
                 LaptopsNumber = laptop1.LaptopsNumber,
                 Quantity = 12
             };
+            LaptopStore laptopStore5 = new LaptopStore
+            {
+                Id = Guid.NewGuid(),
+                StoreNumber = store2.StoreNumber,
+                LaptopsNumber = laptop5.LaptopsNumber,
+                Quantity = 12
+            };
+            LaptopStore laptopStore6 = new LaptopStore
+            {
+                Id = Guid.NewGuid(),
+                StoreNumber = store3.StoreNumber,
+                LaptopsNumber = laptop6.LaptopsNumber,
+                Quantity = 12
+            };
+            LaptopStore laptopStore7 = new LaptopStore
+            {
+                Id = Guid.NewGuid(),
+                StoreNumber = store1.StoreNumber,
+                LaptopsNumber = laptop4.LaptopsNumber,
+                Quantity = 12
+            };
 
-            context.LaptopStore.AddRange(laptopStore1, laptopStore2, laptopStore3, laptopStore4);
+            context.LaptopStore.AddRange(laptopStore1, laptopStore2, laptopStore3, laptopStore4, laptopStore5, laptopStore6, laptopStore7);
             context.SaveChanges();
 
         }
